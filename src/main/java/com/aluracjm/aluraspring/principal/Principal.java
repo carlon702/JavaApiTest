@@ -1,6 +1,5 @@
 package com.aluracjm.aluraspring.principal;
 
-import com.aluracjm.aluraspring.model.DataEpisode;
 import com.aluracjm.aluraspring.model.DataSeason;
 import com.aluracjm.aluraspring.model.DataSeries;
 import com.aluracjm.aluraspring.model.Episode;
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class Principal {
 
-    private DataConversion conversor = new DataConversion();
+    private final DataConversion conversor = new DataConversion();
     private Scanner sc = new Scanner(System.in);
     private final String URL_BASE = "http://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=ba27516a";
