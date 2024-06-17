@@ -1,11 +1,27 @@
 package com.aluracjm.aluraspring.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class Episode {
+@Entity
+@Table(name="episodios")
 
+public class Episode {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
     private Integer temporada;
+    private String titulo;
+    private Integer numeroEpisodio;
+    private Double evaluacion;
+    private LocalDate fechaLanzamiento;
+    @ManyToOne
+    private Serie serie;
+
+    public Episode(){}
+
 
     public Episode(Integer season, DataEpisode d) {
         this.temporada = season;
@@ -46,6 +62,14 @@ public class Episode {
         this.numeroEpisodio = numeroEpisodio;
     }
 
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
     @Override
     public String toString() {
         return
@@ -73,8 +97,5 @@ public class Episode {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
-    private String titulo;
-    private Integer numeroEpisodio;
-    private Double evaluacion;
-    private LocalDate fechaLanzamiento;
+
 }
