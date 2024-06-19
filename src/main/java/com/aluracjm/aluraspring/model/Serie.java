@@ -1,9 +1,5 @@
 package com.aluracjm.aluraspring.model;
-
-
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
-
 import java.util.List;
 import java.util.OptionalDouble;
 @Entity

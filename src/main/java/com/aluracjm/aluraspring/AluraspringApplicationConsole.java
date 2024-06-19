@@ -6,16 +6,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
-
 
 @SpringBootApplication
-public class AluraspringApplication{
+public class AluraspringApplicationConsole implements CommandLineRunner {
 
-
+	@Autowired
+	private SerieRepository repository;
 	public static void main(String[] args) {
-		SpringApplication.run(AluraspringApplication.class, args);
+		SpringApplication.run(AluraspringApplicationConsole.class, args);
 	}
 
-
+	@Override
+	public void run(String... args) throws Exception {
+		Principal principal = new Principal(repository);
+		principal.showMenu();
+	}
 }

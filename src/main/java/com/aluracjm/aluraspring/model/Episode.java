@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
 public class Episode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Long Id;
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
@@ -26,8 +26,11 @@ public class Episode {
     public Episode(Integer season, DataEpisode d) {
         this.temporada = season;
         this.titulo = d.titulo();
-        try{this.evaluacion = Double.valueOf(d.evaluacion());}catch(NumberFormatException e){
-            this.evaluacion = 0.00;
+        this.numeroEpisodio = d.numeroEpisodio();
+        try{
+            this.evaluacion = Double.valueOf(d.evaluacion());
+        }catch(NumberFormatException e){
+            this.evaluacion = 0.0;
         }
         try{
             this.fechaLanzamiento = LocalDate.parse(d.fechaLanzamiento());
@@ -35,7 +38,7 @@ public class Episode {
             this.fechaLanzamiento = null;
         }
 
-        this.numeroEpisodio = d.numeroEpisodio();
+
     }
 
     public Integer getTemporada() {

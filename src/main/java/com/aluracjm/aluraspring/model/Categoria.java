@@ -2,6 +2,8 @@ package com.aluracjm.aluraspring.model;
 
 public enum Categoria {
     ACCION("Action", "Acción"),
+    ANIMACION("Animation", "Animación"),
+    AVENTURA("Adventure", "Aventura"),
     ROMANCE("Romance", "Romance"),
     COMEDIA("Comedy", "Comedia"),
     DRAMA("Drama", "Drama"),
