@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SerieService {
@@ -30,9 +31,7 @@ public class SerieService {
         return conversorDatos(repository.lanzamientosRecientes());
     }
 
-    public List<SerieDTO> conversorDatos(List<Serie> serie){
-        return serie.stream().map(s-> new SerieDTO(s.getId(),s.getTitulo(), s.getTotalTemporadas(), s.getEvaluacion(), s.getPoster(), s.getGenero(), s.getActores(), s.getSinopsis())).toList();
-    }
+
 
 
     public SerieDTO obtenerPorId(Long id) {
@@ -65,5 +64,9 @@ public class SerieService {
     public List<SerieDTO> obtenerSeriesPorCategoria(String genero) {
         Categoria categoria = Categoria.fromEspanol(genero);
         return conversorDatos(repository.findByGenero(categoria));
+    }
+
+    public List<SerieDTO> conversorDatos(List<Serie> serie){
+        return serie.stream().map(s-> new SerieDTO(s.getId(),s.getTitulo(), s.getTotalTemporadas(), s.getEvaluacion(), s.getPoster(), s.getGenero(), s.getActores(), s.getSinopsis())).collect(Collectors.toList());
     }
 }

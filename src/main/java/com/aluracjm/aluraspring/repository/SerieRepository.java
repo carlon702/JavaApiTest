@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface SerieRepository extends JpaRepository<Serie, Long> {
     Optional<Serie> findByTituloContainsIgnoreCase(String nombreSerie);
     List<Serie> findTop5ByOrderByEvaluacionDesc();
-    List<Serie> findByGenero(Categoria categloria);
+    List<Serie> findByGenero(Categoria categoria);
     //List<Serie> findByTotalTemporadasLessThanEqualAndEvaluacionGreaterThanEqual(int totalTemporadas, Double evaluacion);
     @Query("SELECT s FROM Serie s WHERE s.totalTemporadas <= :totalTemporadas AND s.evaluacion >= :evaluacion")
     List<Serie> seriesPorTemporadaYEvaluacion(int totalTemporadas, Double evaluacion);

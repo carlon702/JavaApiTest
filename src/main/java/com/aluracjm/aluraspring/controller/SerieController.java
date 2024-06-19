@@ -50,7 +50,7 @@ public class SerieController {
     }
 
     @GetMapping("/categoria/{nombreGenero}")
-    public List<SerieDTO> obtenerSeriePorCategoria(@PathVariable String genero){
-        return service.obtenerSeriesPorCategoria(genero);
+    public List<SerieDTO> obtenerSeriePorCategoria(@PathVariable String nombreGenero){
+        return service.obtenerSeriesPorCategoria(nombreGenero);
     }
 }
